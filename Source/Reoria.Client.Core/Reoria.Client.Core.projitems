@@ -10,13 +10,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Screens\Attributes\DefaultScreenAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Screens\InGameScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Screens\MainMenuScreen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CameraService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ContentManagerService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\GraphicsDeviceService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ICameraService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IContentManagerService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IGraphicsDeviceService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IScreenService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ISpriteBatchService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ScreenService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SpriteBatchService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Screens\Interface\" />
   </ItemGroup>
 </Project>

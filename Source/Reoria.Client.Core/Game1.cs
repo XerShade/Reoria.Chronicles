@@ -1,15 +1,15 @@
 ﻿using Autofac;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Reoria.Client.Core.Screens;
 using Reoria.Client.Core.Services;
 using Reoria.Client.Core.Services.Interfaces;
 using Reoria.Engine.Core.DependencyInjection;
 using Reoria.Engine.Core.DependencyInjection.Interfaces;
-using IGraphicsDeviceService = Reoria.Client.Core.Services.Interfaces.IGraphicsDeviceService;
 using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
-using Color = Microsoft.Xna.Framework.Color;
+using IGraphicsDeviceService = Reoria.Client.Core.Services.Interfaces.IGraphicsDeviceService;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
+using Screen = MonoGame.Extended.Screens.Screen;
 
 namespace Reoria.Client.Core;
 
@@ -22,6 +22,7 @@ public class Game1 : Game
     protected virtual IContentManagerService ContentManager { get; private set; } = default!;
     protected virtual ISpriteBatchService SpriteBatch { get; private set; } = default!;
     protected virtual ICameraService Camera { get; private set; } = default!;
+    protected virtual IScreenService ScreenService { get; private set; } = default!;
 
     private GraphicsDeviceManager GraphicsDeviceManager { get; } = default!;
 
@@ -41,6 +42,15 @@ public class Game1 : Game
         _ = this.DependencyInjection.Builder.RegisterType<CameraService>()
             .As<ICameraService>()
             .SingleInstance();
+        _ = this.DependencyInjection.Builder.RegisterType<ScreenService>()
+            .As<IScreenService>()
+            .SingleInstance();
+        _ = this.DependencyInjection.Builder.RegisterType<MainMenuScreen>()
+            .As<Screen>()
+            .InstancePerLifetimeScope();
+        _ = this.DependencyInjection.Builder.RegisterType<InGameScreen>()
+            .As<Screen>()
+            .InstancePerLifetimeScope();
         this.Scope = this.DependencyInjection.CreateScope();
 
         // Resolve services, we won't need most of these once we have proper lifecycle code.
@@ -48,6 +58,7 @@ public class Game1 : Game
         this.ContentManager = this.Scope.Resolve<IContentManagerService>();
         this.SpriteBatch = this.Scope.Resolve<ISpriteBatchService>();
         this.Camera = this.Scope.Resolve<ICameraService>();
+        this.ScreenService = this.Scope.Resolve<IScreenService>();
 
         // TODO: Handle MonoGame stuff properly later.
         this.GraphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -61,6 +72,7 @@ public class Game1 : Game
         {
             this.GraphicsService.Initialize(this.GraphicsDevice, this.GraphicsDeviceManager);
             this.Camera.Initalize();
+            this.ScreenService.Initialize(this.Components, this.Scope.Resolve<Screen[]>());
         }
 
         base.Initialize();
@@ -72,6 +84,7 @@ public class Game1 : Game
         {
             this.GraphicsService.Initialize(this.GraphicsDevice, this.GraphicsDeviceManager);
             this.Camera.Initalize();
+            this.ScreenService.Initialize(this.Components, this.Scope.Resolve<Screen[]>());
         }
     }
 
@@ -90,56 +103,11 @@ public class Game1 : Game
             this.SpriteBatch.Initialize();
         }
 
-        if (Keyboard.GetState().IsKeyDown(Keys.W))
-        {
-            this.Camera.MoveCamera(new Vector2(0, -1));
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.S))
-        {
-            this.Camera.MoveCamera(new Vector2(0, 1));
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.A))
-        {
-            this.Camera.MoveCamera(new Vector2(-1, 0));
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.D))
-        {
-            this.Camera.MoveCamera(new Vector2(1, 0));
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.Q))
-        {
-            this.Camera.RotateCamera(-1f);
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.E))
-        {
-            this.Camera.RotateCamera(1f);
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.Z))
-        {
-            this.Camera.ScaleCamera(-1f);
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.C))
-        {
-            this.Camera.ScaleCamera(1f);
-        }
-        if (Keyboard.GetState().IsKeyDown(Keys.X))
-        {
-            this.Camera.Reset();
-        }
+        this.ScreenService.Update(gameTime);
 
-        this.Camera.Update(gameTime);
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
-    {
-        this.GraphicsService.Clear(Color.Orange);
-
-        Texture2D texture = this.ContentManager.Content.Load<Texture2D>("Graphics/Characters/TimeFantasy/chara5");
-        this.SpriteBatch.OnPreRender(gameTime);
-        this.SpriteBatch.Batch.Draw(texture, Vector2.Zero, Color.White);
-        this.SpriteBatch.OnPostRender(gameTime);
-
-        base.Draw(gameTime);
-    }
+        => base.Draw(gameTime);
 }
