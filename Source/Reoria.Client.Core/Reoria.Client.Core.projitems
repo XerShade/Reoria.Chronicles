@@ -10,8 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CameraService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ContentManagerService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\GraphicsDeviceService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ICameraService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IContentManagerService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IGraphicsDeviceService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ISpriteBatchService.cs" />

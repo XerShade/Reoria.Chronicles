@@ -6,9 +6,10 @@ using IGraphicsDeviceService = Reoria.Client.Core.Services.Interfaces.IGraphicsD
 
 namespace Reoria.Client.Core.Services;
 
-public class SpriteBatchService(IGraphicsDeviceService graphicsDeviceService) : ISpriteBatchService
+public class SpriteBatchService(IGraphicsDeviceService graphicsDeviceService, ICameraService cameraService) : ISpriteBatchService
 {
     protected virtual IGraphicsDeviceService GraphicsDevice { get; } = graphicsDeviceService;
+    protected virtual ICameraService Camera { get; } = cameraService;
     public virtual SpriteBatch Batch { get; protected set; } = default!;
 
     public virtual bool IsInitialized
@@ -27,5 +28,9 @@ public class SpriteBatchService(IGraphicsDeviceService graphicsDeviceService) : 
     public virtual void OnPostRender(GameTime gameTime)
         => this.Batch.End();
     public virtual void OnPreRender(GameTime gameTime)
-        => this.Batch.Begin();
+        => this.Batch.Begin(
+            transformMatrix: this.Camera.Camera.GetViewMatrix(),
+            samplerState: SamplerState.PointWrap,
+            sortMode: SpriteSortMode.Deferred
+            );
 }
