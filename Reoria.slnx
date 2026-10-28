@@ -8,8 +8,9 @@
     <Project Path="Applications/Reoria.Server/Reoria.Server.csproj" Id="b00816e4-5cdd-4288-a87d-b14173ab5387" />
   </Folder>
   <Folder Name="/Source/">
-    <Project Path="Source/Reoria.Client.Assets/Reoria.Client.Assets.shproj" Id="c7a644e4-fedf-42da-a30e-4795c9fb82d5" />
+    <Project Path="Source/Reoria.Chronicles.Assets/Reoria.Chronicles.Assets.shproj" Id="c7a644e4-fedf-42da-a30e-4795c9fb82d5" />
     <Project Path="Source/Reoria.Client.Core/Reoria.Client.Core.shproj" Id="00892fae-cb4e-4beb-9d00-c17ce692e485" />
     <Project Path="Source/Reoria.Engine.Core/Reoria.Engine.Core.shproj" Id="94390207-9ab8-4613-bde1-3de4b8b6829c" />
   </Folder>
+  <Folder Name="/Source/Syntaxis/" />
 </Solution>
