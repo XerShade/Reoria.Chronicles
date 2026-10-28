@@ -1,7 +1,6 @@
 [submodule "Source/Reoria.Client.Assets"]
-	path = Source/Reoria.Client.Assets
-	url = git@github.com:XerShade/Reoria.Client.Assets.git
-	branch = 0.1.0.MonoGame
+	path = Source/Reoria.Chronicles.Assets/
+	url = git@github.com:XerShade/Reoria.Chronicles.Assets.git
 [submodule "Source/Syntaxis"]
 	path = Source/Syntaxis
 	url = git@github.com:XerShade/Syntaxis.git
