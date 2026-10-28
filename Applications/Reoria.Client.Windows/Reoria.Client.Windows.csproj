@@ -18,5 +18,5 @@
 
   <Import Project="..\..\Source\Reoria.Client.Core\Reoria.Client.Core.projitems" Label="Shared" />
   <Import Project="..\..\Source\Reoria.Engine.Core\Reoria.Engine.Core.projitems" Label="Shared" />
-  <Import Project="..\..\Source\Reoria.Client.Assets\Reoria.Client.Assets.projitems" Label="Shared" />
+  <Import Project="..\..\Source\Reoria.Chronicles.Assets\Reoria.Chronicles.Assets.projitems" Label="Shared" />
 </Project>
