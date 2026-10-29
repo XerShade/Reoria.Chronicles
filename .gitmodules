@@ -1,6 +1,6 @@
-[submodule "Source/Reoria.Client.Assets"]
-	path = Source/Reoria.Chronicles.Assets/
-	url = git@github.com:XerShade/Reoria.Chronicles.Assets.git
 [submodule "Source/Syntaxis"]
 	path = Source/Syntaxis
 	url = git@github.com:XerShade/Syntaxis.git
+[submodule "Source/Reoria.Chronicles.Assets"]
+	path = Source/Reoria.Chronicles.Assets
+	url = git@github.com:XerShade/Reoria.Chronicles.Assets.git
