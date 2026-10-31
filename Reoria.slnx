@@ -12,5 +12,7 @@
     <Project Path="Source/Reoria.Client.Core/Reoria.Client.Core.shproj" Id="00892fae-cb4e-4beb-9d00-c17ce692e485" />
     <Project Path="Source/Reoria.Engine.Core/Reoria.Engine.Core.shproj" Id="94390207-9ab8-4613-bde1-3de4b8b6829c" />
   </Folder>
-  <Folder Name="/Source/Syntaxis/" />
+  <Folder Name="/Source/Syntaxis/">
+    <Project Path="Source/Syntaxis/Syntaxis.Core/Syntaxis.Core.shproj" Id="11d4145f-272d-4191-9ba0-490c04fcc78b" />
+  </Folder>
 </Solution>

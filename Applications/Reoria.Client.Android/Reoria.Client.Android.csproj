@@ -37,5 +37,6 @@
   <Import Project="..\..\Source\Reoria.Client.Core\Reoria.Client.Core.projitems" Label="Shared" />
   <Import Project="..\..\Source\Reoria.Engine.Core\Reoria.Engine.Core.projitems" Label="Shared" />
   <Import Project="..\..\Source\Reoria.Chronicles.Assets\Reoria.Chronicles.Assets.projitems" Label="Shared" />
+  <Import Project="..\..\Source\Syntaxis\Syntaxis.Core\Syntaxis.Core.projitems" Label="Shared" />
 
 </Project>
