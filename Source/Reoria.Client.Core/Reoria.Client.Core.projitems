@@ -24,7 +24,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\ScreenService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\SpriteBatchService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Screens\Interface\" />
-  </ItemGroup>
 </Project>
