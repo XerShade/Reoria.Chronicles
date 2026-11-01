@@ -2,6 +2,8 @@ using Android.Content.PM;
 using Android.Views;
 using Microsoft.Xna.Framework;
 using Reoria.Client.Core;
+using Syntaxis.Core.Application;
+using Syntaxis.Core.Enumerations;
 
 namespace Reoria.Client.Android;
 
@@ -44,7 +46,9 @@ public class Activity1 : AndroidGameActivity
         base.OnCreate(bundle);
 
         // Create the game instance.
-        this.game = new();
+        using ApplicationBootstrapper bootstrapper = new(Platform.Android, []);
+        using Game1 game = bootstrapper.Run<Game1>();
+        game.Run();
 
         // Get the MonoGame view from the application services
         // This view contains the game rendering surface

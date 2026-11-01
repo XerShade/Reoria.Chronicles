@@ -1,4 +1,6 @@
 ﻿using Reoria.Client.Core;
+using Syntaxis.Core.Application;
+using Syntaxis.Core.Enumerations;
 
 namespace Reoria.Client.Desktop;
 
@@ -20,7 +22,8 @@ public static class Program
     {
         try
         {
-            using Game1 game = new();
+            using ApplicationBootstrapper bootstrapper = new(Platform.Desktop, args);
+            using Game1 game = bootstrapper.Run<Game1>();
             game.Run();
 
             return 0; // Successful exit

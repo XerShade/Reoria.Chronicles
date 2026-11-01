@@ -1,11 +1,9 @@
 ﻿using Autofac;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Reoria.Client.Core.Screens;
-using Reoria.Client.Core.Services;
 using Reoria.Client.Core.Services.Interfaces;
-using Reoria.Engine.Core.DependencyInjection;
-using Reoria.Engine.Core.DependencyInjection.Interfaces;
+using Syntaxis.Core.Hooks.Extensions;
+using Syntaxis.Core.Hooks.Interfaces;
 using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
 using IGraphicsDeviceService = Reoria.Client.Core.Services.Interfaces.IGraphicsDeviceService;
 using Keys = Microsoft.Xna.Framework.Input.Keys;
@@ -15,9 +13,7 @@ namespace Reoria.Client.Core;
 
 public class Game1 : Game
 {
-    protected virtual IDependencyInjectionService DependencyInjection { get; private set; } = default!;
     protected virtual ILifetimeScope Scope { get; private set; } = default!;
-
     protected virtual IGraphicsDeviceService GraphicsService { get; private set; } = default!;
     protected virtual IContentManagerService ContentManager { get; private set; } = default!;
     protected virtual ISpriteBatchService SpriteBatch { get; private set; } = default!;
@@ -26,32 +22,13 @@ public class Game1 : Game
 
     private GraphicsDeviceManager GraphicsDeviceManager { get; } = default!;
 
-    public Game1()
+    public Game1(ILifetimeScope scope)
     {
-        // TODO: Eventually this will be done with a Bootstrapper, for now just do it manually.
-        this.DependencyInjection = new DependencyInjectionService();
-        _ = this.DependencyInjection.Builder.RegisterType<GraphicsDeviceService>()
-            .As<IGraphicsDeviceService>()
-            .SingleInstance();
-        _ = this.DependencyInjection.Builder.RegisterType<ContentManagerService>()
-            .As<IContentManagerService>()
-            .SingleInstance();
-        _ = this.DependencyInjection.Builder.RegisterType<SpriteBatchService>()
-            .As<ISpriteBatchService>()
-            .SingleInstance();
-        _ = this.DependencyInjection.Builder.RegisterType<CameraService>()
-            .As<ICameraService>()
-            .SingleInstance();
-        _ = this.DependencyInjection.Builder.RegisterType<ScreenService>()
-            .As<IScreenService>()
-            .SingleInstance();
-        _ = this.DependencyInjection.Builder.RegisterType<MainMenuScreen>()
-            .As<Screen>()
-            .InstancePerLifetimeScope();
-        _ = this.DependencyInjection.Builder.RegisterType<InGameScreen>()
-            .As<Screen>()
-            .InstancePerLifetimeScope();
-        this.Scope = this.DependencyInjection.CreateScope();
+        // Store the scope.
+        this.Scope = scope;
+
+        IHookEngine hookEngine = this.Scope.Resolve<IHookEngine>();
+        hookEngine.Execute<IHookSubscriber>(hook => Console.Write(hook.GetHookName()));
 
         // Resolve services, we won't need most of these once we have proper lifecycle code.
         this.GraphicsService = this.Scope.Resolve<IGraphicsDeviceService>();
