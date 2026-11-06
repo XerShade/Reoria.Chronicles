@@ -20,4 +20,5 @@
   <Import Project="..\..\Source\Reoria.Engine.Core\Reoria.Engine.Core.projitems" Label="Shared" />
   <Import Project="..\..\Source\Reoria.Chronicles.Assets\Reoria.Chronicles.Assets.projitems" Label="Shared" />
   <Import Project="..\..\Source\Syntaxis\Syntaxis.Core\Syntaxis.Core.projitems" Label="Shared" />
+  <Import Project="..\..\Source\Syntaxis\Syntaxis.MonoGame\Syntaxis.MonoGame.projitems" Label="Shared" />
 </Project>

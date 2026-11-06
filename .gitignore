@@ -417,8 +417,3 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-# The following paths are symlinks, don't commit them.
-[Ss]ource/[Rr]eoria.[Gg]ame.[Dd]ata/[Aa]ssets
-
-# MonoGame.Extended libraries are generated on build
-[Ll]ibraries/[Mm]ono[Gg]ame.[Ee]xtended/*

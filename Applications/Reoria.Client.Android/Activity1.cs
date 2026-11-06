@@ -1,9 +1,9 @@
 using Android.Content.PM;
 using Android.Views;
 using Microsoft.Xna.Framework;
-using Reoria.Client.Core;
 using Syntaxis.Core.Application;
 using Syntaxis.Core.Enumerations;
+using Syntaxis.MonoGame;
 
 namespace Reoria.Client.Android;
 
@@ -30,7 +30,7 @@ public class Activity1 : AndroidGameActivity
     /// <summary>
     /// The Reoria client application instance.
     /// </summary>
-    private Game1? game;
+    private SyntaxisMonoGame? game;
 
     /// <summary>
     /// Called when the activity is first created.
@@ -47,7 +47,7 @@ public class Activity1 : AndroidGameActivity
 
         // Create the game instance.
         using ApplicationBootstrapper bootstrapper = new(Platform.Android, []);
-        using Game1 game = bootstrapper.Run<Game1>();
+        using SyntaxisMonoGame game = bootstrapper.Run<SyntaxisMonoGame>();
         game.Run();
 
         // Get the MonoGame view from the application services

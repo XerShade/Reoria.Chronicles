@@ -1,7 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Reoria.Client.Core;
-using Syntaxis.Core.Application;
+﻿using Syntaxis.Core.Application;
 using Syntaxis.Core.Enumerations;
+using Syntaxis.MonoGame;
 
 namespace Reoria.Client.Windows;
 
@@ -24,7 +23,7 @@ public static class Program
         try
         {
             using ApplicationBootstrapper bootstrapper = new(Platform.Windows, args);
-            using Game1 game = bootstrapper.Run<Game1>();
+            using SyntaxisMonoGame game = bootstrapper.Run<SyntaxisMonoGame>();
             game.Run();
 
             return 0; // Successful exit

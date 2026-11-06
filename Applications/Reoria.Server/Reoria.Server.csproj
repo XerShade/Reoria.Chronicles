@@ -10,7 +10,7 @@
   <Import Project="../../Build/Reoria.Common.props" />
   <Import Project="../../Build/Reoria.Engine.DependencyInjection.props" />
   <Import Project="../../Build/MonoGame.Server.props" />
-  <!--<Import Project="..\..\Source\Syntaxis\Syntaxis.Core\Syntaxis.Core.projitems" Label="Shared" />-->
+  <Import Project="..\..\Source\Syntaxis\Syntaxis.Core\Syntaxis.Core.projitems" Label="Shared" />
   <Import Project="../../Build/LiteNetLib.props" />
 
   <ItemGroup>

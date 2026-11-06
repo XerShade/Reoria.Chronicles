@@ -9,10 +9,9 @@
   </Folder>
   <Folder Name="/Source/">
     <Project Path="Source/Reoria.Chronicles.Assets/Reoria.Chronicles.Assets.shproj" Id="c7a644e4-fedf-42da-a30e-4795c9fb82d5" />
-    <Project Path="Source/Reoria.Client.Core/Reoria.Client.Core.shproj" Id="00892fae-cb4e-4beb-9d00-c17ce692e485" />
-    <Project Path="Source/Reoria.Engine.Core/Reoria.Engine.Core.shproj" Id="94390207-9ab8-4613-bde1-3de4b8b6829c" />
   </Folder>
   <Folder Name="/Source/Syntaxis/">
     <Project Path="Source/Syntaxis/Syntaxis.Core/Syntaxis.Core.shproj" Id="11d4145f-272d-4191-9ba0-490c04fcc78b" />
+    <Project Path="Source/Syntaxis/Syntaxis.MonoGame/Syntaxis.MonoGame.shproj" Id="e586f269-bdee-4c69-b8b2-e5cba4a66809" />
   </Folder>
 </Solution>
